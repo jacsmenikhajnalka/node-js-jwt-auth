@@ -4,6 +4,10 @@ const cors = require("cors");
 
 const app = express();
 
+app.use(express.static('kepek'))
+app.use(express.static('konyv_kep'))
+
+
 var corsOptions = {
   origin: "http://localhost:8081"
 };
