@@ -34,6 +34,32 @@ module.exports = function(app) {
     connection.end()
   })
 
+
+  app.get('/konyv', (req, res) => {
+
+    var mysql = require('mysql')
+    var connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'konyv_adatb'
+    })
+
+    
+    
+    connection.connect()
+    
+    connection.query('SELECT * from konyv', function (err, rows, fields) {
+      if (err) throw err
+    
+      console.log(rows)
+      res.send(rows)
+    })
+    
+    connection.end()
+  })
+
+
   app.post('/torlesszav', (req, res) => {
 
     var mysql = require('mysql')
@@ -80,9 +106,34 @@ module.exports = function(app) {
       res.send(rows)
     })
     
+    
     connection.end()
   })
 
+  app.post('/torleskonyvfajtai', (req, res) => {
+
+    var mysql = require('mysql')
+    var connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'konyv_adatb'
+    })
+
+    
+    
+    connection.connect()
+    
+    connection.query('DELETE from konyv_fajtai WHERE konyv_id='+req.body.bevitel1+'', function (err, rows, fields) {
+      if (err) throw err
+    
+      console.log(rows)
+      res.send(rows)
+    })
+    
+    
+    connection.end()
+  })
 
 
 
