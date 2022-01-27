@@ -84,6 +84,30 @@ module.exports = function(app) {
     connection.end()
   })
 
+  app.post('/felvitel', (req, res) => {
+
+    var mysql = require('mysql')
+    var connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'konyv_adatb'
+    })
+
+    
+    
+    connection.connect()
+    
+    connection.query("INSERT INTO `konyv` (`konyv_id`, `konyv_nev`, `konyv_tipus`, `konyv_kep`) VALUES (NULL, 'a', '1', '1');", function (err, rows, fields) {
+      if (err) throw err
+    
+      console.log(rows)
+      res.send(rows)
+    })
+    
+    connection.end()
+  })
+
 
   app.post('/torleskonyv', (req, res) => {
 
