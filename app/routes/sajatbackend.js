@@ -98,7 +98,7 @@ module.exports = function(app) {
     
     connection.connect()
     
-    connection.query("INSERT INTO konyv  VALUES (NULL, '"+req.body.bevitel1+"', '"+req.body.bevitel2+"', '"+req.body.bevitel3+"');", function (err, rows, fields) {
+    connection.query("INSERT INTO konyv  VALUES (NULL, '"+req.body.bevitel1+"', '"+req.body.bevitel2+"' ,'"+req.body.bevitel3+"')", function (err, rows, fields) {
       if (err) throw err
     
       console.log(rows)
